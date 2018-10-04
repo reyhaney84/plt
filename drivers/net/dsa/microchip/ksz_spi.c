@@ -175,9 +175,10 @@ static int ksz_spi_probe(struct spi_device *spi)
 		dev->pdata = spi->dev.platform_data;
 
 	ret = ksz_switch_register(dev);
-	if (ret)
+	if (ret){
+		dev_err(&spi->dev, "failed to register switch: %i\n", ret);
 		return ret;
-
+	}
 	spi_set_drvdata(spi, dev);
 
 	return 0;

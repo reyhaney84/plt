@@ -11,18 +11,18 @@
 
 #include "imx6q-dmo-ppc.dts"
 
-&iomuxc {
-	imx6qdl-dmo-ppc {
-		pinctrl_ecspi2: ecspi2grp {
-			fsl,pins = <
-				MX6QDL_PAD_DISP0_DAT16__ECSPI2_MOSI	0x0001B0B0
-				MX6QDL_PAD_DISP0_DAT17__ECSPI2_MISO	0x0001B0B0
-				MX6QDL_PAD_DISP0_DAT18__ECSPI2_SS0	0x0001B0B0
-				MX6QDL_PAD_DISP0_DAT19__ECSPI2_SCLK	0x0001B0B0
-			>;
-		};
-	};
-};
+//&iomuxc {
+//	imx6qdl-dmo-ppc {
+//		pinctrl_ecspi2: ecspi2grp {
+//			fsl,pins = <
+//				MX6QDL_PAD_DISP0_DAT16__ECSPI2_MOSI	0x0001B0B0
+//				MX6QDL_PAD_DISP0_DAT17__ECSPI2_MISO	0x0001B0B0
+//				MX6QDL_PAD_DISP0_DAT18__ECSPI2_SS0	0x0001B0B0
+//				MX6QDL_PAD_DISP0_DAT19__ECSPI2_SCLK	0x0001B0B0
+//			>;
+//		};
+//	};
+//};
 
 &pcie {
 	status = "disabled";
@@ -40,63 +40,70 @@
 	status = "disabled";
 };
 
-&fec {
-	fixed-link {
-		speed = <1000>;
-		full-duplex;
-	};
-};
+//&fec {
+//	fixed-link {
+//		speed = <1000>;
+//		full-duplex;
+//	};
+//};
 
-&ecspi2 {
-	pinctrl-names = "default";
-	pinctrl-0 = <&pinctrl_ecspi2>;
+//&ecspi2 {
+//	pinctrl-names = "default";
+//	pinctrl-0 = <&pinctrl_ecspi2>;
 
-	fsl,spi-num-chipselects = <1>;
-	cs-gpios = <&gpio5 12 GPIO_ACTIVE_LOW>;
+//	fsl,spi-num-chipselects = <1>;
+//	cs-gpios = <&gpio5 12 GPIO_ACTIVE_LOW>;
 
-	status = "okay";
+//	status = "disabled";
 
-	ksz9477: ksz9477@0 {
-		status = "okay";
-		compatible = "microchip,ksz9477";
-		reg = <0>;
+//	spidev@0 {
+//		reg = <0>;
+//		compatible = "spidev";
+//		spi-max-frequency = <1000000>; 
+//		status = "okay";
+//	};
 
-		spi-max-frequency = <44000000>;
-		spi-cpha;
-		spi-cpol;
+//	ksz9477: ksz9477@0 {
+//		status = "okay";
+//		compatible = "microchip,ksz9477";
+//		reg = <0>;
 
-		ports {
-			#address-cells = <1>;
-			#size-cells = <0>;
-			port@0 {
-				reg = <0>;
-				label = "lan1";
-			};
-			port@1 {
-				reg = <1>;
-				label = "lan2";
-			};
-			port@2 {
-				reg = <2>;
-				label = "lan3";
-			};
-			port@3 {
-				reg = <3>;
-				label = "lan4";
-			};
-			port@4 {
-				reg = <4>;
-				label = "lan5";
-			};
-			port@5 {
-				reg = <5>;
-				label = "cpu";
-				ethernet = <&fec>;
-				fixed-link {
-					speed = <1000>;
-					full-duplex;
-				};
-			};
-		};
-	};
-};
+//		spi-max-frequency = <44000000>;
+//		spi-cpha;
+//		spi-cpol;
+
+//		ports {
+//			#address-cells = <1>;
+//			#size-cells = <0>;
+//			port@0 {
+//				reg = <0>;
+//				label = "lan1";
+//			};
+//			port@1 {
+//				reg = <1>;
+//				label = "lan2";
+//			};
+//			port@2 {
+//				reg = <2>;
+//				label = "lan3";
+//			};
+//			port@3 {
+//				reg = <3>;
+//				label = "lan4";
+//			};
+//			port@4 {
+//				reg = <4>;
+//				label = "lan5";
+//			};
+//			port@5 {
+//				reg = <5>;
+//				label = "cpu";
+//				ethernet = <&fec>;
+//				fixed-link {
+//					speed = <1000>;
+//					full-duplex;
+//				};
+//			};
+//		};
+//	};
+//};

@@ -1172,11 +1172,6 @@ static int ksz_switch_init(struct ksz_device *dev)
 {
 	int i;
 
-	mutex_init(&dev->reg_mutex);
-	mutex_init(&dev->stats_mutex);
-	mutex_init(&dev->alu_mutex);
-	mutex_init(&dev->vlan_mutex);
-
 	dev->ds->ops = &ksz_switch_ops;
 
 	for (i = 0; i < ARRAY_SIZE(ksz_switch_chips); i++) {
@@ -1222,6 +1217,11 @@ struct ksz_device *ksz_switch_alloc(struct device *base,
 	swdev->ds = ds;
 	swdev->priv = priv;
 	swdev->ops = ops;
+
+	mutex_init(&swdev->reg_mutex);
+	mutex_init(&swdev->stats_mutex);
+	mutex_init(&swdev->alu_mutex);
+	mutex_init(&swdev->vlan_mutex);
 
 	return swdev;
 }
